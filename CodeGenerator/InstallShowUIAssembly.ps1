@@ -160,7 +160,7 @@ $global:addTypeParameters = @{
     Language='CSharpVersion3'
 }
 # If we're running in .Net 4, we shouldn't specify the Language, because it'll use CSharp4
-if ($PSVersionTable.ClrVersion.Major -ge 4) {
+if ($PSVersionTable.ClrVersion -eq $nothing -or $PSVersionTable.ClrVersion.Major -ge 4) {
     $AddTypeParameters.Remove("Language")
 }
 # Check to see if the outputpath can be written to: we don't *have* to save it as a dll
